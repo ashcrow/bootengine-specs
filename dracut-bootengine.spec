@@ -31,12 +31,16 @@ bootengine dracut modules for Container Linux.
 
 %install
 mkdir -p $RPM_BUILD_ROOT/%{dracutlibdir}/modules.d/
-cp -rf dracut/30ignition $RPM_BUILD_ROOT/%{dracutlibdir}/modules.d/
+cp -rf dracut/* $RPM_BUILD_ROOT/%{dracutlibdir}/modules.d/
 
 %files
 %defattr(-,root,root,0755)
 %doc README.md NOTICE DCO
 %license LICENSE
+%{dracutlibdir}/modules.d/10usr-generator/module-setup.sh
+%{dracutlibdir}/modules.d/10usr-generator/remount-sysroot.service
+%{dracutlibdir}/modules.d/10usr-generator/testsuite.sh
+%{dracutlibdir}/modules.d/10usr-generator/usr-generator
 %{dracutlibdir}/modules.d/30ignition/coreos-digitalocean-network.service
 %{dracutlibdir}/modules.d/30ignition/coreos-static-network.service
 %{dracutlibdir}/modules.d/30ignition/ignition-disks.service
@@ -47,6 +51,9 @@ cp -rf dracut/30ignition $RPM_BUILD_ROOT/%{dracutlibdir}/modules.d/
 %{dracutlibdir}/modules.d/30ignition/module-setup.sh
 %{dracutlibdir}/modules.d/30ignition/retry-umount.sh
 %{dracutlibdir}/modules.d/30ignition/sysroot-boot.service
+%{dracutlibdir}/modules.d/30ignition/ignition-quench.clc
+%{dracutlibdir}/modules.d/30ignition/ignition-quench.ign
+%{dracutlibdir}/modules.d/README.txt
 
 %changelog
 * Tue May 29 2018 Steve Milner <smilner@redhat.com> - 0.0.1-0.1
